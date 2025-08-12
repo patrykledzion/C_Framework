@@ -1,0 +1,9 @@
+#pragma once
+
+#define SUCCESS 0
+#define ERROR_NULL_INPUT 1
+#define ERROR_MEMORY_ALLOCATION 2
+
+
+#define ERROR_FILE_NOT_OPENED 5
+#define ERROR_FILE_READ 6
