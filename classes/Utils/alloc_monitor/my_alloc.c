@@ -7,6 +7,7 @@ void _alloc_monitor_delMem(void* ptr);
 
 #undef malloc
 #undef free
+#undef realloc
 
 static g_allocMonitorOn = 0;
 
@@ -82,3 +83,20 @@ void _alloc_monitor_my_free_debug(void* ptr)
 	_alloc_monitor_delMem(ptr);
 	free(ptr);
 }
+
+void* _alloc_monitor_my_realloc_debug_(void* ptr, size_t size)
+{
+	struct _alloc_monitor_t** curr = &g_AllocMonitor;
+	while (*curr) {
+		if ((*curr)->ptr == ptr) { 
+			(*curr)->size = size;
+			void* new_ptr = realloc(ptr, size);
+			(*curr)->ptr = new_ptr;
+			return new_ptr;
+		}
+		curr = &(*curr)->next;
+	}
+
+	return NULL;
+}
+
