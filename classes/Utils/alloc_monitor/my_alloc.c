@@ -86,17 +86,23 @@ void _alloc_monitor_my_free_debug(void* ptr)
 
 void* _alloc_monitor_my_realloc_debug_(void* ptr, size_t size)
 {
-	struct _alloc_monitor_t** curr = &g_AllocMonitor;
-	while (*curr) {
-		if ((*curr)->ptr == ptr) { 
-			(*curr)->size = size;
-			void* new_ptr = realloc(ptr, size);
-			(*curr)->ptr = new_ptr;
-			return new_ptr;
+	if (g_AllocMonitor)
+	{
+		struct _alloc_monitor_t** curr = &g_AllocMonitor;
+		while (*curr) {
+			if ((*curr)->ptr == ptr) {
+				(*curr)->size = size;
+				void* new_ptr = realloc(ptr, size);
+				(*curr)->ptr = new_ptr;
+				return new_ptr;
+			}
+			curr = &(*curr)->next;
 		}
-		curr = &(*curr)->next;
+		return NULL;
 	}
-
-	return NULL;
+	else {
+		return realloc(ptr, size);
+	}
+	
 }
 
