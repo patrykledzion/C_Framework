@@ -135,6 +135,7 @@
     <ClCompile Include="classes\File\File.c" />
     <ClCompile Include="classes\Utils\alloc_monitor\my_alloc.c" />
     <ClCompile Include="classes\Utils\Utils.c" />
+    <ClCompile Include="classes\Utils\Vector\Vector.c" />
     <ClCompile Include="classes\XMLReader\XMLReader.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="classes\return_codes.h" />
     <ClInclude Include="classes\Utils\alloc_monitor\my_alloc.h" />
     <ClInclude Include="classes\Utils\Utils.h" />
+    <ClInclude Include="classes\Utils\Vector\Vector.h" />
     <ClInclude Include="classes\XMLReader\XMLReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
