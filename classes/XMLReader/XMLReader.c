@@ -7,7 +7,7 @@
 
 int xml_reader_init(XMLReader* out, const char* filepath)
 {
-	file_open(out->inputfile, filepath);
+	file_open(&out->inputfile, filepath);
 	TODO(vector_init(out->tags, sizeof(XMLTag), 8 /*start size*/)); out->tags = NULL;
 	TODO(xml_reader_tokenizer_init(out->tokenizer)); out->tokenizer = NULL;
 

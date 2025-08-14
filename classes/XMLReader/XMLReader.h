@@ -1,11 +1,11 @@
 #pragma once
- 
-struct File; 
+#include "File/File.h" 
+
 struct Tokenizer;
 struct XMLTag;
 
 typedef struct xml_reader_t {
-	struct File* inputfile;
+	File inputfile;
 	struct Tokenizer* tokenizer;
 	struct XMLTag* tags;
 } XMLReader;
